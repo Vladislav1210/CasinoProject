@@ -39,7 +39,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Введите новый логин:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Введите логин:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
@@ -52,7 +52,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Введите новый пароль:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Введите пароль:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QPushButton" name="finish_ent">
@@ -84,17 +84,17 @@
     <widget class="QLineEdit" name="enter_name">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>270</x>
        <y>240</y>
        <width>281</width>
        <height>31</height>
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="emter_password">
+    <widget class="QLineEdit" name="enter_password">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>270</x>
        <y>400</y>
        <width>281</width>
        <height>31</height>
@@ -133,7 +133,7 @@
     <zorder>finish_ent</zorder>
     <zorder>name_error</zorder>
     <zorder>enter_name</zorder>
-    <zorder>emter_password</zorder>
+    <zorder>enter_password</zorder>
     <zorder>password_error</zorder>
    </widget>
   </widget>

@@ -25,6 +25,7 @@ class Start_Window(QMainWindow):
         self.setFixedSize(651, 761)
         self.pict1.setPixmap(QPixmap('online-casino-slots.png'))
         self.register_button.clicked.connect(self.register_window)
+        self.enter_button.clicked.connect(self.enter_window)
 
     def register_window(self):
         self.rw = Register_Window()
@@ -53,6 +54,7 @@ class Register_Window(QMainWindow):
         self.flag = True
 
         self.login = self.register_name.text()
+        self.login_error = False
         self.password = self.register_password.text()
         self.card = self.register_card_number.text()
         self.card_check = True
@@ -69,13 +71,17 @@ class Register_Window(QMainWindow):
         #  Ошибка логина
         f = sqlite3.connect('Casino_database.db')
         cur = f.cursor()
+        for i in cur.execute("SELECT login from client_data").fetchall():
+            if self.login in i:
+                self.login_error = True
+                break
         if len(self.login) <= 3:
             self.name_error.setText('Логин должен содержать 4 или более символа')
             self.flag = False
         elif ' ' in self.login:
             self.name_error.setText('Логин не должен содержать пробелы')
             self.flag = False
-        elif self.login in cur.execute("SELECT login from client_data").fetchall():
+        elif self.login_error:
             self.name_error.setText('Данный логин уже существует')
             self.flag = False
         f.close()
@@ -137,12 +143,13 @@ class Enter_Window(QMainWindow):
         super().__init__()
         uic.loadUi('Casino_project3.ui', self)
         self.setFixedSize(651, 761)
-        self.pict2.setPixmap(QPixmap('White_Casino_background.png'))
+        self.pict3.setPixmap(QPixmap('White_Casino_background.png'))
 
-        self.finish_ent.clicled.connect(self.enter_finish)
+        self.finish_ent.clicked.connect(self.enter_finish)
 
     def enter_finish(self):
         self.flag = True
+        self.login_check = True
 
         self.login = self.enter_name.text()
         self.password = self.enter_password.text()
@@ -152,11 +159,17 @@ class Enter_Window(QMainWindow):
 
         f = sqlite3.connect('Casino_database.db')
         cur = f.cursor()
-        if self.login not in cur.execute("SELECT login from client_data").fetchall():
+        # ошибка логина
+        for i in cur.execute("SELECT login from client_data").fetchall():
+            if self.login in i:
+                self.login_check = False
+                break
+        if self.login_check:
             self.flag = False
             self.name_error.setText('Такого логина не существует')
-        elif self.password != cur.execute(f"""SELECT password from client_data 
-        WHERE login = '{self.login}'""").fetchone():
+        # ошибка пароля
+        elif self.password != ''.join(cur.execute(f"""SELECT password from client_data 
+        WHERE login = '{self.login}'""").fetchone()):
             self.flag = False
             self.password_error.setText('Неверный пароль')
         f.close()
@@ -165,7 +178,7 @@ class Enter_Window(QMainWindow):
             cur = f.cursor()
             balance = cur.execute(f"""SELECT balance from client_data 
                     WHERE login = '{self.login}'""").fetchone()
-            self.mw = Main_Window(self, self.login, int(balance))
+            self.mw = Main_Window(self, self.login, int(*balance))
             self.setCentralWidget(self.mw)
             self.mw.show()
             self.ew = Enter_Window()
@@ -176,8 +189,8 @@ class Enter_Window(QMainWindow):
 class Main_Window(QMainWindow):
     def __init__(self, *arg):
         super().__init__()
-        self.login = 'aboba'
-        self.balance = 0  # должно быть всегда int
+        self.login = arg[1]
+        self.balance = arg[2]  # должно быть всегда int
         uic.loadUi('Casino_project4.ui', self)
         self.setFixedSize(651, 761)
         self.pict4.setPixmap(QPixmap('Casino_patern.png'))
@@ -212,7 +225,7 @@ class Main_Window(QMainWindow):
     def withdraw_method(self):
         f = sqlite3.connect('Casino_database.db')
         cur = f.cursor()
-        value, ok_pressed = QInputDialog.getInt(self, 'Снятие', 'Введите снимаемую сумму', 50, 50,
+        value, ok_pressed = QInputDialog.getInt(self, 'Снятие', 'Введите снимаемую сумму', 0, 0,
                                                 int(*cur.execute(f"""SELECT balance from client_data WHERE login = 
                                                 '{self.login}'""").fetchone()), 100)
         if ok_pressed:
@@ -227,7 +240,7 @@ class Main_Window(QMainWindow):
         self.sw = Start_Window()
         self.setCentralWidget(self.sw)
         self.sw.show()
-        self.mw = Main_Window()
+        self.mw = Main_Window(self, None, None)
         self.mw.setVisible(False)
 
     def spin(self):
