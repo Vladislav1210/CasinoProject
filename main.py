@@ -5,6 +5,9 @@ from PyQt5.QtGui import QPixmap
 from PyQt5 import uic
 
 NUMBER = ['1', '2', '3', '4', '5', '6', '7', '7', '8', '9', '0']
+SLOTS_TYPES = ['']
+
+
 class Start_Window(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -99,9 +102,13 @@ class Register_Window(QMainWindow):
         if self.cvv_check is False and self.cvv_check2:
             self.cvv_error.setText('CVV карты должен содержать только цифры')
         if self.flag:
-            #  cur = sqlite3.connect('Casino_database.db').cursor()
-            #  cur.execute("""INSERT INTO client_data(id,login,""")
-            self.mw = Main_Window()
+            f = sqlite3.connect('Casino_database.db')
+            cur = f.cursor()
+            cur.execute(f"""INSERT INTO client_data(login,password,balance) VALUES('{self.login}', '{self.password}', 
+            {0})""")
+            f.commit()
+            f.close()
+            self.mw = Main_Window(self, self.login, 0)
             self.setCentralWidget(self.mw)
             self.mw.show()
             self.rw = Register_Window()
@@ -109,11 +116,15 @@ class Register_Window(QMainWindow):
 
 
 class Main_Window(QMainWindow):
-    def __init__(self):
+    def __init__(self, *arg):
         super().__init__()
+        self.login = arg[1]
+        self.balance = arg[2]
         uic.loadUi('Casino_project4.ui', self)
         self.setFixedSize(651, 761)
         self.pict4.setPixmap(QPixmap('Casino_patern.png'))
+        self.login_label.setText(self.login)
+        self.balance_label.setText(f'Ваш баланс: {self.balance}')
 
 
 
