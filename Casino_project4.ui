@@ -226,9 +226,35 @@
     <widget class="QLabel" name="troll_label">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>170</x>
+       <y>510</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="spin_error">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
        <y>460</y>
-       <width>351</width>
+       <width>121</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="info_label">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>450</y>
+       <width>251</width>
        <height>41</height>
       </rect>
      </property>
@@ -247,6 +273,8 @@
     <zorder>login_label</zorder>
     <zorder>bet_combobox</zorder>
     <zorder>troll_label</zorder>
+    <zorder>spin_error</zorder>
+    <zorder>info_label</zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
