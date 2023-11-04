@@ -75,39 +75,6 @@
       <string>TextLabel</string>
      </property>
     </widget>
-    <widget class="QWidget" name="horizontalLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>320</y>
-       <width>341</width>
-       <height>111</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="slots">
-      <item>
-       <widget class="QLabel" name="slot1">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="slot2">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="slot3">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
     <widget class="QPushButton" name="spin_button">
      <property name="geometry">
       <rect>
@@ -132,6 +99,9 @@
        <width>151</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 75 9pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="text">
       <string>TextLabel</string>
@@ -158,6 +128,10 @@
        <width>151</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(0, 0, 127);</string>
      </property>
      <property name="text">
       <string>TextLabel</string>
@@ -237,6 +211,11 @@
        <height>41</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(232, 209, 209);
+border-radius: 10px;</string>
+     </property>
      <property name="text">
       <string>TextLabel</string>
      </property>
@@ -263,6 +242,49 @@
        <height>41</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(0, 0, 127);</string>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="slot1">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>320</y>
+       <width>109</width>
+       <height>109</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="slot2">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>320</y>
+       <width>109</width>
+       <height>109</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="slot3">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>320</y>
+       <width>109</width>
+       <height>109</height>
+      </rect>
+     </property>
      <property name="text">
       <string>TextLabel</string>
      </property>
@@ -271,7 +293,6 @@
     <zorder>replenish_button</zorder>
     <zorder>withdraw_button</zorder>
     <zorder>table_result</zorder>
-    <zorder>horizontalLayoutWidget</zorder>
     <zorder>spin_button</zorder>
     <zorder>balance_label</zorder>
     <zorder>exit_button</zorder>
@@ -280,6 +301,9 @@
     <zorder>troll_label</zorder>
     <zorder>spin_error</zorder>
     <zorder>info_label</zorder>
+    <zorder>slot1</zorder>
+    <zorder>slot2</zorder>
+    <zorder>slot3</zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

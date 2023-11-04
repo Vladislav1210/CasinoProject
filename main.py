@@ -7,8 +7,12 @@ from random import choice
 
 NUMBER = ['1', '2', '3', '4', '5', '6', '7', '7', '8', '9', '0']  # цифирки
 
-SLOTS_TYPES = ['7', '7', 'bar', 'bar', 'bar', 'b', 'b', 'b', 'b', 'g', 'g', 'g',
-               'g', 'g', 'l', 'l', 'l', 'l', 'l', 'l', 'c', 'c', 'c', '.', '.', '.', '.']  # для вероятности
+SLOTS_TYPES = ['7', '7', '7', 'bar', 'bar', 'bar', 'bar', 'bar',  # 8
+               'b', 'b', 'b', 'b', 'b', 'b', 'g', 'g', 'g', 'g', 'g', 'g', 'g',  # 13
+               'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'c', 'c', 'c',  # 11
+               '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.']  # 18
+# 32/50 удачных слотов
+
 
 TROLL_PHRASES = ['Сегодня не твой день', 'Неудачник', 'Деньги - прощайте',
                  'Банкротство - здравствуй', 'На улице тоже есть чем питаться',
@@ -17,6 +21,9 @@ TROLL_PHRASES = ['Сегодня не твой день', 'Неудачник', 
 
 VICTORY_PHRASES = ['И у нас победитель!', 'Мне кажется ты жульничал',
                    'Кто бы мог поверить?!', 'Jackpot!!!', 'Судьба тебя одарила']  # при выйгрыше
+
+SLOT_PICTURE = {'c': 'Cherry_slot.png', '7': 'Seven_slot.png', 'bar': 'Bar_slot.png', 'b': 'bell_slot.png',
+                'g': 'Grape_slot.png', 'l': 'Lemon_slot.png', '.': 'Empty_slot.png'}
 
 
 class Start_Window(QMainWindow):
@@ -48,7 +55,7 @@ class Register_Window(QMainWindow):
         super().__init__()
         uic.loadUi('Casino_project2.ui', self)
         self.setFixedSize(651, 761)
-        self.pict2.setPixmap(QPixmap('White_Casino_background.png'))
+        self.pict2.setPixmap(QPixmap('Casino_background.png'))
         self.finish_reg.clicked.connect(self.register_finish)
 
     def register_finish(self):
@@ -144,7 +151,7 @@ class Enter_Window(QMainWindow):
         super().__init__()
         uic.loadUi('Casino_project3.ui', self)
         self.setFixedSize(651, 761)
-        self.pict3.setPixmap(QPixmap('White_Casino_background.png'))
+        self.pict3.setPixmap(QPixmap('Casino_background.png'))
 
         self.finish_ent.clicked.connect(self.enter_finish)
 
@@ -201,9 +208,9 @@ class Main_Window(QMainWindow):
         self.spin_error.setText('')
         self.troll_label.setText('')
         self.info_label.setText('')
-        self.slot1.setText('.')
-        self.slot2.setText('.')
-        self.slot3.setText('.')
+        self.slot1.setPixmap(QPixmap(SLOT_PICTURE['.']))
+        self.slot2.setPixmap(QPixmap(SLOT_PICTURE['.']))
+        self.slot3.setPixmap(QPixmap(SLOT_PICTURE['.']))
 
         self.replenish_button.clicked.connect(self.replenish_method)  # Пополнить
         self.withdraw_button.clicked.connect(self.withdraw_method)  # Снять
@@ -257,9 +264,9 @@ class Main_Window(QMainWindow):
             self.spin_error.setText('Не хватает средств')
             self.troll_label.setText('')
             self.info_label.setText('')
-            self.slot1.setText('.')
-            self.slot2.setText('.')
-            self.slot3.setText('.')
+            self.slot1.setPixmap(QPixmap(SLOT_PICTURE['.']))
+            self.slot2.setPixmap(QPixmap(SLOT_PICTURE['.']))
+            self.slot3.setPixmap(QPixmap(SLOT_PICTURE['.']))
             return None
         cherry_count = 0
         for i in (sl1, sl2, sl3):
@@ -363,9 +370,9 @@ class Main_Window(QMainWindow):
             self.balance_label.setText(f'Ваш баланс: {self.balance}')
             self.troll_label.setText(choice(TROLL_PHRASES))
             self.info_label.setText(f'Вы проиграли')
-        self.slot1.setText(sl1)
-        self.slot2.setText(sl2)
-        self.slot3.setText(sl3)
+        self.slot1.setPixmap(QPixmap(SLOT_PICTURE[sl1]))
+        self.slot2.setPixmap(QPixmap(SLOT_PICTURE[sl2]))
+        self.slot3.setPixmap(QPixmap(SLOT_PICTURE[sl3]))
 
 
 
