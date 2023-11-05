@@ -80,7 +80,7 @@ color: rgb(0, 0, 127);
 </string>
      </property>
      <property name="text">
-      <string>Завершить регестрацию</string>
+      <string>Войти</string>
      </property>
     </widget>
     <widget class="QLabel" name="name_error">
@@ -150,6 +150,24 @@ font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
       <string>TextLabel</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="cancell_button">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>590</y>
+       <width>191</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+color: rgb(170, 0, 0);
+</string>
+     </property>
+     <property name="text">
+      <string>Отмена</string>
+     </property>
+    </widget>
     <zorder>pict3</zorder>
     <zorder>label</zorder>
     <zorder>label_2</zorder>
@@ -158,6 +176,7 @@ font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
     <zorder>enter_name</zorder>
     <zorder>enter_password</zorder>
     <zorder>password_error</zorder>
+    <zorder>cancell_button</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

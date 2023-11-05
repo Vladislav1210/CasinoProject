@@ -65,10 +65,10 @@
     <widget class="QLabel" name="table_result">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>20</y>
+       <x>10</x>
+       <y>10</y>
        <width>191</width>
-       <height>251</height>
+       <height>271</height>
       </rect>
      </property>
      <property name="text">
@@ -130,7 +130,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
 color: rgb(0, 0, 127);</string>
      </property>
      <property name="text">
@@ -217,7 +217,7 @@ background-color: rgb(232, 209, 209);
 border-radius: 10px;</string>
      </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;TextLabel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="spin_error">
@@ -228,6 +228,9 @@ border-radius: 10px;</string>
        <width>121</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>TextLabel</string>
@@ -243,7 +246,7 @@ border-radius: 10px;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
 color: rgb(0, 0, 127);</string>
      </property>
      <property name="text">
@@ -289,6 +292,19 @@ color: rgb(0, 0, 127);</string>
       <string>TextLabel</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>290</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ваша ставка</string>
+     </property>
+    </widget>
     <zorder>pict4</zorder>
     <zorder>replenish_button</zorder>
     <zorder>withdraw_button</zorder>
@@ -304,6 +320,7 @@ color: rgb(0, 0, 127);</string>
     <zorder>slot1</zorder>
     <zorder>slot2</zorder>
     <zorder>slot3</zorder>
+    <zorder>label</zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

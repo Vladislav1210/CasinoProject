@@ -240,6 +240,24 @@ color: rgb(170, 0, 0);</string>
       <string>TextLabel</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="cancell_button">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>620</y>
+       <width>191</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+color: rgb(170, 0, 0);
+</string>
+     </property>
+     <property name="text">
+      <string>Отмена</string>
+     </property>
+    </widget>
     <zorder>pict2</zorder>
     <zorder>label_4</zorder>
     <zorder>label</zorder>
@@ -254,6 +272,7 @@ color: rgb(170, 0, 0);</string>
     <zorder>password_error</zorder>
     <zorder>card_error</zorder>
     <zorder>cvv_error</zorder>
+    <zorder>cancell_button</zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
