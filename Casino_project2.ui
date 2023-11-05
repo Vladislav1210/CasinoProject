@@ -196,9 +196,9 @@ color: rgb(170, 0, 0);</string>
     <widget class="QLabel" name="card_error">
      <property name="geometry">
       <rect>
-       <x>230</x>
+       <x>170</x>
        <y>410</y>
-       <width>421</width>
+       <width>471</width>
        <height>21</height>
       </rect>
      </property>
