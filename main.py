@@ -1,10 +1,11 @@
 import sys
 import io
 import sqlite3
-from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QLineEdit
 from PyQt5.QtGui import QPixmap
 from PyQt5 import uic
 from random import choice
+import datetime as dt
 
 NUMBER = ['1', '2', '3', '4', '5', '6', '7', '7', '8', '9', '0']  # цифирки
 
@@ -164,8 +165,8 @@ color: rgb(0, 0, 127);
 </string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;
-      Введите новый логин:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;
+          &quot;&gt;Введите новый логин:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
@@ -183,8 +184,9 @@ color: rgb(0, 0, 127);
 </string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;
-      Введите новый пароль:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;
+      &gt;Введите новый пароль:
+          &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_3">
@@ -202,8 +204,9 @@ color: rgb(0, 0, 127);
 </string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;
-      Введите номер карты:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;
+      &gt;Введите номер карты:
+          &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -221,8 +224,9 @@ color: rgb(0, 0, 127);
 </string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;
-      Введите CVV карты:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;
+      &lt;span style=&quot; font-size:14pt;&quot;&gt;Введите CVV карты:
+          &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QPushButton" name="finish_reg">
@@ -257,8 +261,8 @@ color: rgb(0, 0, 127);
 font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&lt;br/&gt;
-      &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;
+      &gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="register_name">
@@ -276,7 +280,7 @@ font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
       <rect>
        <x>300</x>
        <y>220</y>
-       <width>281</width>
+       <width>271</width>
        <height>31</height>
       </rect>
      </property>
@@ -315,8 +319,9 @@ font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
 color: rgb(170, 0, 0);</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&lt;br/&gt;
-      &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;
+          span style=&quot; font-size:10pt;&quot;&gt;&lt;br/&gt;&lt;
+          /span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="card_error">
@@ -333,8 +338,9 @@ color: rgb(170, 0, 0);</string>
 color: rgb(170, 0, 0);</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&lt;br/&gt;
-      &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;
+          span style=&quot; font-size:10pt;&quot;&gt;&lt;br/&gt;&lt;
+          /span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="cvv_error">
@@ -351,8 +357,9 @@ color: rgb(170, 0, 0);</string>
 color: rgb(170, 0, 0);</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&lt;br/&gt;
-      &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;
+          body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&lt;br/
+          &gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="pict2">
@@ -386,6 +393,19 @@ color: rgb(170, 0, 0);
       <string>Отмена</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="hide_password">
+     <property name="geometry">
+      <rect>
+       <x>580</x>
+       <y>220</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>показать</string>
+     </property>
+    </widget>
     <zorder>pict2</zorder>
     <zorder>label_4</zorder>
     <zorder>label</zorder>
@@ -401,6 +421,7 @@ color: rgb(170, 0, 0);
     <zorder>card_error</zorder>
     <zorder>cvv_error</zorder>
     <zorder>cancell_button</zorder>
+    <zorder>hide_password</zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -511,8 +532,8 @@ color: rgb(0, 0, 127);
 font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&lt;br/
-      &gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;
+      &lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="enter_name">
@@ -549,8 +570,8 @@ font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
 font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&lt;br/&gt;
-      &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;
+      &lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="pict3">
@@ -584,6 +605,19 @@ color: rgb(170, 0, 0);
       <string>Отмена</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="hide_password">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>400</y>
+       <width>75</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>показать</string>
+     </property>
+    </widget>
     <zorder>pict3</zorder>
     <zorder>label</zorder>
     <zorder>label_2</zorder>
@@ -593,6 +627,7 @@ color: rgb(170, 0, 0);
     <zorder>enter_password</zorder>
     <zorder>password_error</zorder>
     <zorder>cancell_button</zorder>
+    <zorder>hide_password</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -610,6 +645,7 @@ color: rgb(170, 0, 0);
  <resources/>
  <connections/>
 </ui>
+
 """
 
 casino_project4 = """<?xml version="1.0" encoding="UTF-8"?>
@@ -980,6 +1016,19 @@ class Register_Window(QMainWindow):
         self.pict2.setPixmap(QPixmap('Casino_background.png'))
         self.finish_reg.clicked.connect(self.register_finish)
         self.cancell_button.clicked.connect(self.cancell)
+        self.register_password.setEchoMode(QLineEdit.Password)
+        self.hide_flag = True
+        self.hide_password.clicked.connect(self.hide_show)
+
+    def hide_show(self):
+        if self.hide_flag:
+            self.hide_flag = False
+            self.register_password.setEchoMode(QLineEdit.Normal)
+            self.hide_password.setText('скрыть')
+        else:
+            self.hide_flag = True
+            self.register_password.setEchoMode(QLineEdit.Password)
+            self.hide_password.setText('показать')
 
     def cancell(self):
         self.sw = Start_Window()
@@ -1063,10 +1112,12 @@ class Register_Window(QMainWindow):
         if self.cvv_check is False and self.cvv_check2:
             self.cvv_error.setText('CVV карты должен содержать только цифры')
         if self.flag:
+            date = dt.datetime.now()
             f = sqlite3.connect('Casino_database.db')
             cur = f.cursor()
             cur.execute(f"""INSERT INTO client_data(login,password,balance) VALUES('{self.login}', '{self.password}', 
             {0})""")
+            cur.execute(f"""INSERT INTO timeofappearance(login,time) VALUES('{self.login}', '{date}')""")
             f.commit()
             f.close()
             self.mw = Main_Window(self, self.login, 0)
@@ -1086,6 +1137,19 @@ class Enter_Window(QMainWindow):
 
         self.finish_ent.clicked.connect(self.enter_finish)
         self.cancell_button.clicked.connect(self.cancell)
+        self.hide_password.clicked.connect(self.hide_show)
+        self.hide_flag = True
+        self.enter_password.setEchoMode(QLineEdit.Password)
+
+    def hide_show(self):
+        if self.hide_flag:
+            self.hide_flag = False
+            self.enter_password.setEchoMode(QLineEdit.Normal)
+            self.hide_password.setText('скрыть')
+        else:
+            self.hide_flag = True
+            self.enter_password.setEchoMode(QLineEdit.Password)
+            self.hide_password.setText('показать')
 
     def cancell(self):
         self.sw = Start_Window()
